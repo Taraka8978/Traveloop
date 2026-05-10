@@ -1,0 +1,217 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 3rem 5%;
+}
+
+.headerContent {
+  color: white;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.authorBadge {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.metaData {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.metaData span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.description {
+  font-size: 1.125rem;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+.mainContent {
+  flex: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 4rem 5%;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.timelineItem {
+  display: flex;
+  gap: 2rem;
+}
+
+.timelineMarker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 24px;
+}
+
+.markerDot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--brand-primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+  margin-top: 1.5rem;
+  z-index: 2;
+}
+
+.markerLine {
+  width: 2px;
+  flex: 1;
+  background-color: var(--border-color);
+  margin-top: 0.5rem;
+  margin-bottom: -1.5rem;
+}
+
+.stopCard {
+  flex: 1;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.stopHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.stopIcon {
+  color: var(--brand-secondary);
+  width: 28px;
+  height: 28px;
+  margin-top: 0.25rem;
+}
+
+.stopHeader h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.stopDates {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.activitiesList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.activityItem {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.activityIcon {
+  color: var(--brand-primary);
+  margin-top: 0.125rem;
+  flex-shrink: 0;
+}
+
+.activityDetails {
+  flex: 1;
+}
+
+.activityDetails h4 {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.activityDetails p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.activityMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.footer {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.footer a {
+  color: var(--brand-primary);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: 300px;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .timelineItem {
+    gap: 1rem;
+  }
+}
