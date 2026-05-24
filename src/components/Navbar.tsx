@@ -45,9 +45,13 @@ export default function Navbar() {
         </div>
 
         <div className={styles.navActions}>
-          <button className={styles.iconButton} title="Profile">
+          <Link 
+            href="/profile" 
+            className={`${styles.iconButton} ${pathname === '/profile' ? styles.active : ''}`} 
+            title="Profile"
+          >
             <UserIcon size={20} />
-          </button>
+          </Link>
           <button onClick={handleLogout} className={styles.iconButton} title="Logout">
             <LogOut size={20} />
           </button>

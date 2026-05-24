@@ -10,13 +10,13 @@ export default async function TripLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   const user = await getUser();
   if (!user) redirect('/login');
 
   const trip = await prisma.trip.findUnique({
-    where: { id: params.id },
+    where: { id: (await params).id },
     include: { stops: true }
   });
 

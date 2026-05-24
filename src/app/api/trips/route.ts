@@ -9,6 +9,12 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    // Verify user exists in database (handles stale sessions after re-seeding)
+    const dbUser = await prisma.user.findUnique({ where: { id: user.userId } });
+    if (!dbUser) {
+      return NextResponse.json({ error: 'Session expired. Please log out and log back in.' }, { status: 401 });
+    }
+
     const { name, description, startDate, endDate, isPublic } = await req.json();
 
     if (!name || !startDate || !endDate) {

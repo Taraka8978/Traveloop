@@ -3,9 +3,9 @@ import { notFound } from 'next/navigation';
 import { Calendar, MapPin, Activity, Clock } from 'lucide-react';
 import styles from './public.module.css';
 
-export default async function PublicItinerary({ params }: { params: { id: string } }) {
+export default async function PublicItinerary({ params }: { params: Promise<{ id: string }> }) {
   const trip = await prisma.trip.findUnique({
-    where: { id: params.id },
+    where: { id: (await params).id },
     include: {
       user: {
         select: { name: true }

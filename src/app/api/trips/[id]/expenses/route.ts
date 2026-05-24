@@ -8,9 +8,9 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     const tripId = (await params).id;
-    const { cityId, startDate, endDate, order } = await req.json();
+    const { category, description, amount, date } = await req.json();
 
-    if (!cityId || !startDate || !endDate) {
+    if (!category || !description || amount === undefined || !date) {
       return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
     }
 
@@ -19,18 +19,19 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
       return NextResponse.json({ error: 'Not found or unauthorized' }, { status: 403 });
     }
 
-    const stop = await prisma.stop.create({
+    const expense = await prisma.expense.create({
       data: {
         tripId,
-        cityId,
-        startDate: new Date(startDate),
-        endDate: new Date(endDate),
-        order
+        category,
+        description,
+        amount: parseFloat(amount),
+        date: new Date(date)
       }
     });
 
-    return NextResponse.json(stop, { status: 201 });
+    return NextResponse.json(expense, { status: 201 });
   } catch (error) {
+    console.error('Error creating expense:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }

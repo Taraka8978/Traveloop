@@ -1,11 +1,11 @@
 import { prisma } from '@/lib/prisma';
 import ChecklistClient from './ChecklistClient';
 
-export default async function ChecklistPage({ params }: { params: { id: string } }) {
+export default async function ChecklistPage({ params }: { params: Promise<{ id: string }> }) {
   const items = await prisma.checklistItem.findMany({
-    where: { tripId: params.id },
+    where: { tripId: (await params).id },
     orderBy: { category: 'asc' }
   });
 
-  return <ChecklistClient initialItems={items} tripId={params.id} />;
+  return <ChecklistClient initialItems={items} tripId={(await params).id} />;
 }
